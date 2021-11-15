@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { memo, useCallback, useEffect, VFC } from "react";
-import { Center, Modal, ModalContent, ModalOverlay, Spinner, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
+import { Center, FormControl, FormLabel, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Input, Spinner, Stack, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { UserCard } from "../organism/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
 
@@ -33,10 +33,31 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} autoFocus={false} motionPreset="slideInBottom" >
         <ModalOverlay />
-        <ModalContent>
-          <p>This is Test</p>
+        <ModalContent pb={6}>
+          <ModalHeader>User Detail</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody mx={4}>
+            <Stack spacing={4}>
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input value="Chiho" isReadOnly/>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Full Name</FormLabel>
+                <Input value="Chiho Maekawa" isReadOnly/>
+              </FormControl>
+              <FormControl>
+                <FormLabel>MAIL</FormLabel>
+                <Input value="12345@gmail.com" isReadOnly/>
+              </FormControl>
+              <FormControl>
+                <FormLabel>TELL</FormLabel>
+                <Input value="123-456-789" isReadOnly/>
+              </FormControl>
+            </Stack>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
